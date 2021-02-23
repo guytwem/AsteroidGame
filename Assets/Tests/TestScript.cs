@@ -21,8 +21,17 @@ public class TestScript
     {
         Object.Destroy(game.gameObject);
     }
-    
-   
+
+    [UnityTest]
+    public IEnumerator AsteroidSpawns()
+    {
+        GameObject asteroid = game.spawner.Spawn();
+
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.IsNotNull(asteroid);
+    }
+
     [UnityTest]
     public IEnumerator AsteroidMovesDown()
     {

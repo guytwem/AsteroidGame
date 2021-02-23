@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
 
@@ -75,13 +76,15 @@ public class PlayerMovement : MonoBehaviour
             Shoot();
         }
 
+        
     }
-    /*void OnCollisionEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         
         isGameOver = true;
         //Time.timeScale = 0;
-    }*/
+        Debug.Log(isGameOver);
+    }
 
     public GameObject Shoot()
     {

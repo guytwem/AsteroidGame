@@ -13,4 +13,12 @@ public class Asteroids : MonoBehaviour
     {
         Destroy(asteroidPrefab);
     }
+
+    public void Update()
+    {
+        if(asteroidPrefab.transform.position.y <= -15f)
+        {
+            Destroy(asteroidPrefab);
+        }
+    }
 }
