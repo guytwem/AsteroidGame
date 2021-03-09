@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -17,7 +17,8 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject ship;
 
-    
+    public GameObject gameOverText;
+    public GameObject restartButton;
 
     public float t = 0.0f;
 
@@ -35,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        isGameOver = false;
     }
 
     // Update is called once per frame
@@ -76,14 +77,30 @@ public class PlayerMovement : MonoBehaviour
             Shoot();
         }
 
+        if(isGameOver == false)
+        {
+            gameOverText.SetActive(false);
+            restartButton.SetActive(false);
+        }
+        if(isGameOver == true)
+        {
+            gameOverText.SetActive(true);
+            restartButton.SetActive(true);
+            Time.timeScale = 0;
+        }
         
     }
     void OnCollisionEnter2D(Collision2D collision)
     {
+        if(collision.gameObject.tag == "Asteroid")
+        {
+            isGameOver = true;
+            
+            Debug.Log(isGameOver);
+        }
         
-        isGameOver = true;
         //Time.timeScale = 0;
-        Debug.Log(isGameOver);
+        
     }
 
     public GameObject Shoot()
@@ -100,7 +117,13 @@ public class PlayerMovement : MonoBehaviour
     }
 
     
-        
+    public void Restart()
+    {
+        isGameOver = false;
+        Time.timeScale = 1;
+        SceneManager.LoadScene("GameScene");
+
+    }    
        
     
 }

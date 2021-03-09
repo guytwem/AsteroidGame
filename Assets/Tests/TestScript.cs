@@ -49,25 +49,25 @@ public class TestScript
 
         
     }
-    /*
+    
     [UnityTest]
     public IEnumerator GameOverOccursOnAsteroidCollision()
     {
         
 
-        GameObject asteroid = spawner.Spawn();
+        GameObject asteroid = game.spawner.Spawn();
 
-        GameObject ship = player.ship;
+        GameObject ship = game.player.ship;
 
-        player = ship.GetComponent<PlayerMovement>();
+        game.player = ship.GetComponent<PlayerMovement>();
 
         asteroid.transform.position = ship.transform.position;
 
         yield return new WaitForSeconds(0.1f);
 
-        Assert.True(player.isGameOver);
+        Assert.IsTrue(game.player.isGameOver);
     }
-    */
+    
     [UnityTest]
     public IEnumerator LaserMovesUp()
     {
@@ -81,6 +81,16 @@ public class TestScript
 
         Assert.Greater(laser.transform.position.y, initialYPos);
 
+    }
+    [UnityTest]
+    public IEnumerator DoesPlayerMove()
+    {
+        GameObject ship = game.player.ship;
+        game.player = ship.GetComponent<PlayerMovement>();
+
+        yield return new WaitForSeconds(0.1f);
+
+        Assert.IsTrue(game.player.moving);
     }
 
 }

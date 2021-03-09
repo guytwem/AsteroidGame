@@ -173,7 +173,7 @@ GameObject:
   - component: {fileID: 6459073609836168212}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,6 +260,8 @@ MonoBehaviour:
   isGameOver: 0
   fireSlot: {fileID: 6459073607826646636}
   ship: {fileID: 6459073609836168217}
+  gameOverText: {fileID: 5306164777343838566, guid: 0683ad0a8be104d418eb489fdc8b6d50, type: 3}
+  restartButton: {fileID: 1155780250410234866, guid: 4f18347ac87efcb41a6684b697f615f2, type: 3}
   t: 0
   moving: 0
 --- !u!50 &6459073609836168219
